@@ -17,8 +17,8 @@ export const auth = async () => {
       },
     }
   );
-  console.log(response.data.access_token)
   localStorage.setItem('token', response.data.access_token);
   return response.data.access_token
 }
 
+auth()

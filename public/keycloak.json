@@ -1,6 +1,6 @@
 {
   "realm": "pethub",
-  "auth-server-url": "http://0.0.0.0:8080",
+  "auth-server-url": "http://localhost:8080",
   "ssl-required": "external",
   "client_id": "pethub-api",
   "resource": "pethub-api",
