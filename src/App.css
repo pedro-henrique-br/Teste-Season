@@ -1,0 +1,19 @@
+*
+{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+#root {
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+}
+
+.header-logo {
+  margin: 0 60vh 0 50px;
+  max-width: 400px;
+  height: 50px;
+  min-width: 250px;
+}
