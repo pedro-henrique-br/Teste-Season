@@ -43,20 +43,23 @@ export const Login = () => {
     const isValidCpf = validForm.isValidCpf(userCredentials.cpf)
 
     if(userCredentials.name != "" && userCredentials.cpf != ""){
-      const user = await api.isValidUser(isValidName, isValidCpf ? (isValidCpf as string) : (null))
-      return user
-    }
-    toast.error('Preencha o formulário corretamente!', {
+      if(isValidCpf as string){
+        const user = await api.isValidUser(isValidName, isValidCpf as string)
+        return user
+      }
+    } else {
+      toast.error('Preencha o formulário corretamente!', {
       position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      transition: Bounce,
-      });
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });
+    }
   };
 
   return (
