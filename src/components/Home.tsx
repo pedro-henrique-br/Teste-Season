@@ -1,32 +1,24 @@
-import React from 'react'
-import Box from '@mui/material/Box';
-import Tab from '@mui/material/Tab';
-import TabContext from '@mui/lab/TabContext';
-import TabList from '@mui/lab/TabList';
+import NavTabs from './parts/nav/NavTabs'
 
-// https://cors-anywhere.herokuapp.com/corsdemo
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 
 export const Home = () => {
-  const [value, setValue] = React.useState('1');
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue);
-    console.log(value)
-  };
-  
 
   return (
     <>
-    <TabContext value={value}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <TabList onChange={handleChange} aria-label="lab API tabs example">
-          <Tab label="Ver animais" value="1" />
-          <Tab label="Pesquisar animal" value="2" />
-          <Tab label="Cadastrar animais" value="3" />
-          <Tab label="Cadastrar Usuario" value="4" />
-        </TabList>
-      </Box>
-    </TabContext>
+    <NavTabs />
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline/>
+      <h1>Welcome</h1>
+    </ThemeProvider>
     </>
   )
 }

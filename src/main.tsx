@@ -1,12 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
-import UserService from './services/UserService.ts';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const renderApp = () => ReactDOM.createRoot(document.getElementById("root")!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
 <React.StrictMode>
   <App />
+  <ToastContainer />
 </React.StrictMode>,
 );
 
-UserService.initKeycloak(renderApp);

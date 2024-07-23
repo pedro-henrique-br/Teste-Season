@@ -6,8 +6,6 @@ import {
   Link,
   Grid,
   Box,
-  Checkbox,
-  FormControlLabel,
   TextField,
   CssBaseline,
   Button,
@@ -18,18 +16,47 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Header } from "../parts/header/Header";
 import { Aside } from "../parts/aside/Aside";
 import { api } from "../../services/utils/api";
+import { auth } from "../../services/auth";
+import { Bounce, toast } from "react-toastify";
+import { validForm } from "../../services/utils/validForm";
 
 const defaultTheme = createTheme();
 
 export const Login = () => {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    api.getUserInfo();
-    console.log({
-      userName: data.get("username"),
-      password: data.get("password"),
-    });
+  
+  auth()
+
+  if(localStorage.getItem("isAuth") != null){
+    window.location.href = "/home"
+  }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+
+    const userCredentials = {
+      name: data.get("name") as string,
+      cpf: data.get("cpf") as string
+    }
+
+    const isValidName = validForm.isValidName(userCredentials.name)
+    const isValidCpf = validForm.isValidCpf(userCredentials.cpf)
+
+    if(userCredentials.name != "" && userCredentials.cpf != ""){
+      const user = await api.isValidUser(isValidName, isValidCpf ? (isValidCpf as string) : (null))
+      return user
+    }
+    toast.error('Preencha o formulário corretamente!', {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+      });
   };
 
   return (
@@ -74,31 +101,25 @@ export const Login = () => {
               <Box
                 component="form"
                 noValidate
-                onSubmit={(e) => handleSubmit(e)}
+                onSubmit={handleSubmit}
                 sx={{ mt: 1 }}>
                 <TextField
                   margin="normal"
                   required
                   fullWidth
-                  id="username"
-                  label="Username"
-                  name="username"
-                  autoComplete="username"
+                  id="name"
+                  label="Name"
+                  name="name"
                 />
                 <TextField
                   margin="normal"
                   required
                   fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
-                />
-                <FormControlLabel
-                  control={<Checkbox value="remember" color="primary" />}
-                  label="Remember me"
-                />
+                  name="cpf"
+                  label="Cpf"
+                  type="string"
+                  id="cpf"
+                  />
                 <Button
                   id={styles["Button"]}
                   type="submit"
@@ -108,11 +129,6 @@ export const Login = () => {
                   Login
                 </Button>
                 <Grid container>
-                  <Grid item xs>
-                    <Link href="#" variant="body2">
-                      Forgot password?
-                    </Link>
-                  </Grid>
                   <Grid item>
                     <Link href="/register" variant="body2">
                       {"Don't have an account? Sign Up"}

@@ -37,7 +37,7 @@ export const GetAnimalRows = () => {
         },
       }}
       pageSizeOptions={[5, 10]}
-    />
-  </div>
+      />
+    </div>
   )
 }
