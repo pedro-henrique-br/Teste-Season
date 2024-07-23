@@ -1,30 +1,26 @@
-# React + TypeScript + Vite
+Seguem as informações do teste: 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Para o desenvolvimento desse teste, será preciso obrigatoriamente estar escrito utilizando a Biblioteca React de preferência utilizando Typescript. O Framework css a ser empregado, pode ser o Bootstrap, Tailwindcss ou o Material Design, ou seja, a biblioteca que tiver melhor domínio. A nossa sugestão é a utilização do Material Design por utilizarmos ela no dia-a-dia, porém, não é mandatório.
 
-Currently, two official plugins are available:
+Os itens que serão avaliados, serão a qualidade, concisão do código e entrega dentro do prazo.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Anexo a esse e-mail, encaminho o conjunto de requisições para a API que o Pedro irá fazer as requisições.
+A Documentação dos Endpoints da API, pode ser acessado através da URL https://pethub-hml.cgtecnologia.com.br/swagger-ui/index.html#/
 
-## Expanding the ESLint configuration
+A autenticação é feita através do Keycloak que fornecerá o Bearer Token e com o Bearer Token, a API pode ser consumida.
+O Keycloak é um servidor de autenticação compatível com OpenID e é o responsável pela geração dos Tokens.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+A requisição para o login da aplicação, deve ser feita via Post, no formato x-www-form-urlencoded passando as credenciais de acesso que constam no conjunto de requisições do Postman que envio anexo.
 
-- Configure the top-level `parserOptions` property like this:
+A ordem sugerida de desenvolvimento desse projeto, é a seguinte:
+Login
+Cadastro de Usuário (o usuário passado já deve estar autenticado) para cadastrar os dados da Pessoa
+Cadastro de Animal
+Lista de animais
+Detalhes de um animal
+Com a sugestão acima, serão 5 telas a serem desenvolvidas.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json', './tsconfig.app.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+A API, vincula os animais cadastrados ao usuário autenticado, ou seja, o Usuário João, ao fazer login no sistema, visualizará apenas os dados cadastrados por ele. Não há a possibilidade de um usuário cadastrar dados para outro usuário por exemplo.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+
+Se tiver alguma dúvida, me coloco à disposição.
