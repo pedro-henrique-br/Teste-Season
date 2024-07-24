@@ -1,46 +1,62 @@
-<h2 id="technologies">💻 Stack</h2>
 
-- React
-- Typescript
-- MUI(Material Design)
+# Teste FrontEnd
 
-<h2 id="started">🚀 Como rodar este repositório em sua maquina local</h2>
+## Stack utilizada
 
-<h3>Pré-requisitos</h3>
+**Client:** React, Typescript, MUI (Material Design)
 
-- [NodeJS](https://github.com/) v20.12.1
+**Node.JS v20.12.1**
 
-<h3>Clonando na maquina local</h3>
+## Rodando o repositório localmente
 
-Como Clonar esse repositório
+Clone este repositório
 
 ```bash
-git clone https://github.com/pedro-henrique-br/Teste-Season
+  git clone https://github.com/pedro-henrique-br/Teste-Season
 ```
 
-<h3>Iniciando</h3>
+Va para o diretório
 
-Como iniciar este repositório? 
+```bash
+  cd Teste-Season
+```
 
+Instale
+as dependencias
+
+```bash
+  npm install
+```
+
+
+## Environment Variables
+
+Antes de Rodar este repositório, você precisará adicionar as seguintes variáveis ​​de ambiente ao seu arquivo .env
+
+`VITE_GRANT_TYPE = GRANT_TYPE`
+
+`VITE_CLIENT_ID = CLIENT_ID`
+
+`VITE_USERNAME = USERNAME`
+
+`VITE_PASSWORD = PASSWORD`
+
+`VITE_CLIENT_SECRET = CLIENT_SECRET`
+
+## Use o CORS DEMO
 para evitar a necessidade de um proxy usei CORS Anywhere para evitar o erro de cross-origin
 
-Basta entrar no link abaixo e requisitar o acesso temporario
+Basta entrar no link abaixo e requisitar o acesso **temporário**
+
 https://cors-anywhere.herokuapp.com/corsdemo
 
-DOCS - do cors-demo(https://github.com/Rob--W/cors-anywhere/issues/301)
+
+*DOCS - cors-demo* https://github.com/Rob--W/cors-anywhere/issues/301
+
+
+## Inicie o servidor
 
 ```bash
-cd Teste-Season
-npm install
-npm run dev
+  npm run dev
 ```
 
-Crie um .env na raiz do projeto com os acessos de auth do keycloak
-
-```bash
-VITE_GRANT_TYPE = grant-type
-VITE_CLIENT_ID = client-id
-VITE_USERNAME = username
-VITE_PASSWORD = password
-VITE_CLIENT_SECRET = client-secret
-```
