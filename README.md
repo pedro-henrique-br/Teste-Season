@@ -62,6 +62,6 @@ https://cors-anywhere.herokuapp.com/corsdemo
 
 ## Tarefas, erros/otimizações
 
-<li>Erro 401 To many request[]</li>
+<li>Erro 401 To many request[] - atualmente</li>
 <li>botão que exibe as informações do animal na lista de animais[]</li>
 
