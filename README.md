@@ -22,7 +22,7 @@ git clone https://github.com/pedro-henrique-br/Teste-Season
 
 Como iniciar este repositório? 
 
-Antes de iniciar o projeto, use a demo do cors-anywhere para evitar o erro de CORS
+para evitar a necessidade de um proxy usei CORS Anywhere para evitar o erro de cross-origin
 
 Basta entrar no link abaixo e requisitar o acesso temporario
 https://cors-anywhere.herokuapp.com/corsdemo
