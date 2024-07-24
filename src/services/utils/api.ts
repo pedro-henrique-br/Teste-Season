@@ -13,10 +13,10 @@ const getAllAnimals = async () => {
       }
     );
 
-    return response
+    return response.data
 
   } catch (error){
-    toast.error(`An error has occurred ${error}`, {
+    toast.error(`Ocorreu um erro ${error}`, {
       position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -30,22 +30,22 @@ const getAllAnimals = async () => {
   }
 }
 
-const registerAnimal = async () => {
+const registerAnimal = async (name: string, scientificName: string, specieName: string, color: string, chipCode: number, tattoCode: number, birthday: string, portSize: string, weight: number, temperament: string, breed: string) => {
   try{
     await axios.post(
     'https://cors-anywhere.herokuapp.com/https://pethub-hml.cgtecnologia.com.br/api/v1/animal',
     {
-        nome: "kayn",
-        nomeCientifico: "Felis catus",
-        nomeEspecie: "Gato",
-        cor: "preto",
-        codigoChip: null,
-        codigoTatuagem: null,
-        dataNascimento: "2019-12-15",
-        tamanhoPorte: "Grande",
-        peso: 7.5,
-        temperamento: "Calmo",
-        raca: "SRD"
+        nome: name,
+        nomeCientifico: scientificName,
+        nomeEspecie: specieName,
+        cor: color,
+        codigoChip: chipCode,
+        codigoTatuagem: tattoCode,
+        dataNascimento: birthday,
+        tamanhoPorte: portSize,
+        peso: weight,
+        temperamento: temperament,
+        raca: breed
     },
     {
       headers: {
@@ -55,7 +55,7 @@ const registerAnimal = async () => {
     }
   );
 
-  toast.success('🐴 Animal successfully registered!', {
+  toast.success('🐴 Animal cadastrado com sucesso!', {
     position: "bottom-right",
     autoClose: 5000,
     hideProgressBar: false,
@@ -68,7 +68,7 @@ const registerAnimal = async () => {
     });
 
   } catch (error){
-    toast.error(`An error has occurred ${error}`, {
+    toast.error(`Ocorreu um erro ${error}`, {
       position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -94,7 +94,7 @@ const getAnimalInfo = async (id: number) => {
       }
 
     );
-    if(!response){
+    if(response.data.length === 0){
       toast.error(`Animal not found`, {
         position: "bottom-right",
         autoClose: 5000,
@@ -106,10 +106,12 @@ const getAnimalInfo = async (id: number) => {
         theme: "light",
         transition: Bounce,
         });
+        return false
     }
+    return response.data
   }
   catch(error){
-    toast.error(`Houve um erro ${error}`, {
+    toast.error(`Ocorreu um erro ${error}`, {
       position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -137,7 +139,7 @@ const isValidUser = async (name: string, cpf: string) => {
 
 
   if(response.data.nome === name && response.data.cpf === cpf){
-    toast.success('Welcome!', {
+    toast.success('Bem vindo!', {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -154,7 +156,7 @@ const isValidUser = async (name: string, cpf: string) => {
     }, 2000)
   }
   else{
-    toast.info('User not found!', {
+    toast.info('Usuario não encontrado!', {
       position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -185,7 +187,7 @@ const isUserRegistered = async (name: string, cpf: string, birthday: string) => 
   );
 
   if((response.data.nome === name && response.data.cpf === cpf) && response.data.dataNascimento === birthday){
-    toast.success('The informed user already has a registration, we are redirecting you...', {
+    toast.success('O usuario informado ja tem cadastro, estamos te redirecionando...', {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -202,7 +204,7 @@ const isUserRegistered = async (name: string, cpf: string, birthday: string) => 
     }, 2000)}
 
   else{
-    toast.info('Contact the administrator to register', {
+    toast.info('Contate o seu administrador para se cadastrar', {
       position: "top-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -219,10 +221,11 @@ const isUserRegistered = async (name: string, cpf: string, birthday: string) => 
 }
 }
 
+
 export const api = {
   getAllAnimals,
   isValidUser,
   getAnimalInfo,
   registerAnimal,
-  isUserRegistered
+  isUserRegistered,
 }

@@ -1,5 +1,5 @@
 import "../../App.css";
-import styles from "./login.module.css";
+import styles from './login.module.css'
 
 import {
   Typography,
@@ -28,7 +28,7 @@ export const Login = () => {
 
   if(localStorage.getItem("isAuth") != null){
     window.location.href = "/home"
-  }
+  } 
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,14 +40,14 @@ export const Login = () => {
     }
 
     const isValidName = validForm.isValidName(userCredentials.name)
-    const isValidCpf = validForm.isValidCpf(userCredentials.cpf)
+    const isValidCpf = validForm.isValidCpf(userCredentials.cpf) as string
 
     if(userCredentials.name != "" && userCredentials.cpf != ""){
-      if(isValidCpf as string){
-        api.isValidUser(isValidName, isValidCpf as string)
+      if(isValidCpf){
+        api.isValidUser(isValidName, isValidCpf)
       }
     } else {
-      toast.error('Fill out the form correctly!', {
+      toast.error('Prencha o formulario correntamente!', {
       position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -70,7 +70,7 @@ export const Login = () => {
           component="main"
           sx={{ height: "100vh", width: "100vw" }}>
           <CssBaseline />
-          <Grid className={styles.container} item xs={false} sm={4} md={7} />
+          <Grid item xs={false} sm={4} md={7} />
           <Grid
             item
             xs={12}
@@ -110,7 +110,7 @@ export const Login = () => {
                   required
                   fullWidth
                   id="name"
-                  label="Name"
+                  label="Nome"
                   name="name"
                 />
                 <TextField
@@ -127,13 +127,13 @@ export const Login = () => {
                   type="submit"
                   fullWidth
                   variant="contained"
-                  sx={{ mt: 3, mb: 2 }}>
+                  sx={{ mt: 3, mb: 2}}>
                   Login
                 </Button>
                 <Grid container>
                   <Grid item>
                     <Link href="/register" variant="body2">
-                      {"Don't have an account? Sign Up"}
+                      {"Não tem uma conta? Inscrever-se"}
                     </Link>
                   </Grid>
                 </Grid>

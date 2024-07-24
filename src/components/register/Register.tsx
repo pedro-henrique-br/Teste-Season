@@ -87,7 +87,7 @@ export const Register = () => {
                 required
                 fullWidth
                 id="name"
-                label="name"
+                label="Nome"
                 name="name"
                 />
                 </InputLabel>
@@ -109,7 +109,7 @@ export const Register = () => {
                 name="birthday"
                 type="date"
                 id="birtday"
-                helperText="Please enter your birthday"
+                helperText="Por favor insira sua data de aniversário"
                 />
               </InputLabel>
               <Button
@@ -124,7 +124,7 @@ export const Register = () => {
               <Grid container>
                 <Grid item>
                   <Link href="/login" variant="body2">
-                    {"Already have an account? Login"}
+                    {"já tem uma conta? Conecte-se"}
                   </Link>
                 </Grid>
               </Grid>

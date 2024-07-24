@@ -2,11 +2,11 @@ import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import { LogoutButton } from '../../LogoutButton';
+import { LogoutButton } from '../../button/LogoutButton';
 import { styled } from '@mui/material/styles';
-import { GetAnimalList } from '../../GetAnimalList';
-import { GetAnimalInfo } from '../../GetAnimalInfo';
-import { RegisterAnimal } from '../../RegisterAnimal';
+import { AnimalList } from '../../animal/AnimalList';
+import { AnimalInfo } from '../../animal/AnimalInfo';
+import { RegisterAnimal } from '../../animal/RegisterAnimal';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -83,7 +83,7 @@ const StyledTab = styled((props: StyledTabProps) => (
 
 export default function Navtabs() {
   const [value, setValue] = React.useState(0);
-
+  
   const handleChange = (_e: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
@@ -96,17 +96,17 @@ export default function Navtabs() {
           onChange={handleChange}
           aria-label="styled tabs example"
         >
-          <StyledTab label="Animals List" {...a11yProps(0)}/>
-          <StyledTab label="Animals Info" {...a11yProps(1)}/>
-          <StyledTab label="Register an Animal"  {...a11yProps(2)}/>
+          <StyledTab label="Lista de animais" {...a11yProps(0)}/>
+          <StyledTab label="Proucure um animal" {...a11yProps(1)}/>
+          <StyledTab label="Registre um animal"  {...a11yProps(2)}/>
         </StyledTabs>
         <LogoutButton />
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <GetAnimalList />
+        <AnimalList />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <GetAnimalInfo />
+        <AnimalInfo  />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         <RegisterAnimal />
