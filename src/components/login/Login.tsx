@@ -1,5 +1,5 @@
 import "../../App.css";
-import styles from './login.module.css'
+import styles from "./login.module.css";
 
 import {
   Typography,
@@ -23,12 +23,11 @@ import { validForm } from "../../services/utils/validForm";
 const defaultTheme = createTheme();
 
 export const Login = () => {
-  
-  auth()
+  auth();
 
-  if(localStorage.getItem("isAuth") != null){
-    window.location.href = "/home"
-  } 
+  if (localStorage.getItem("isAuth") != null) {
+    window.location.href = "/home";
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,19 +35,19 @@ export const Login = () => {
 
     const userCredentials = {
       name: data.get("name") as string,
-      cpf: data.get("cpf") as string
-    }
+      cpf: data.get("cpf") as string,
+    };
 
-    const isValidName = validForm.isValidName(userCredentials.name)
-    const isValidCpf = validForm.isValidCpf(userCredentials.cpf) as string
+    const isValidName = validForm.isValidName(userCredentials.name);
+    const isValidCpf = validForm.isValidCpf(userCredentials.cpf) as string;
 
-    if(userCredentials.name != "" && userCredentials.cpf != ""){
-      if(isValidCpf){
-        api.isValidUser(isValidName, isValidCpf)
+    if (userCredentials.name != "" && userCredentials.cpf != "") {
+      if (isValidCpf) {
+        api.isValidUser(isValidName, isValidCpf);
       }
     } else {
-      toast.error('Prencha o formulario correntamente!', {
-      position: "bottom-right",
+      toast.error("Prencha o formulario correntamente!", {
+        position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -57,7 +56,7 @@ export const Login = () => {
         progress: undefined,
         theme: "light",
         transition: Bounce,
-        });
+      });
     }
   };
 
@@ -121,13 +120,13 @@ export const Login = () => {
                   label="Cpf"
                   type="string"
                   id="cpf"
-                  />
+                />
                 <Button
                   id={styles["Button"]}
                   type="submit"
                   fullWidth
                   variant="contained"
-                  sx={{ mt: 3, mb: 2}}>
+                  sx={{ mt: 3, mb: 2 }}>
                   Login
                 </Button>
                 <Grid container>

@@ -12,7 +12,6 @@ const getAllAnimals = async () => {
         },
       }
     );
-
     return response.data
 
   } catch (error){
@@ -30,45 +29,58 @@ const getAllAnimals = async () => {
   }
 }
 
-const registerAnimal = async (name: string, scientificName: string, specieName: string, color: string, chipCode: number, tattoCode: number, birthday: string, portSize: string, weight: number, temperament: string, breed: string) => {
-  try{
-    await axios.post(
-    'https://cors-anywhere.herokuapp.com/https://pethub-hml.cgtecnologia.com.br/api/v1/animal',
-    {
-        nome: name,
-        nomeCientifico: scientificName,
-        nomeEspecie: specieName,
-        cor: color,
-        codigoChip: chipCode,
-        codigoTatuagem: tattoCode,
-        dataNascimento: birthday,
-        tamanhoPorte: portSize,
-        peso: weight,
-        temperamento: temperament,
-        raca: breed
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-        Accept : 'application/json',
+const registerAnimal = async (name: string, specieName: string, weight: number, scientificName: string, color: string, birthday: string, animalportSize: string, animalTemperament: string, breed: string, chipCode: string, tattoCode: string) => {
+  if(name.length >= 3, specieName.length >= 3){
+    try{
+      const response = await axios.post(
+      'https://cors-anywhere.herokuapp.com/https://pethub-hml.cgtecnologia.com.br/api/v1/animal',
+      {
+          nome: name,
+          nomeEspecie: specieName,
+          peso: weight,
+          nomeCientifico: scientificName,
+          cor: color,
+          dataNascimento: birthday,
+          tamanhoPorte: animalportSize,
+          temperamento: animalTemperament,
+          raca: breed,
+          codigoChip: chipCode || null,
+          codigoTatuagem: tattoCode || null
       },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Accept : 'application/json',
+        },
+      }
+    );
+    toast.success('🐴 Animal cadastrado com sucesso!', {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+      });
+      return response
+    } catch (error){
+      toast.error(`Ocorreu um erro ${error}`, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        });
     }
-  );
-
-  toast.success('🐴 Animal cadastrado com sucesso!', {
-    position: "bottom-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-    transition: Bounce,
-    });
-
-  } catch (error){
-    toast.error(`Ocorreu um erro ${error}`, {
+  } else {
+    toast.error(`Insira informações validas!`, {
       position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
@@ -80,6 +92,7 @@ const registerAnimal = async (name: string, scientificName: string, specieName: 
       transition: Bounce,
       });
   }
+  
 }
 
 const getAnimalInfo = async (id: number) => {

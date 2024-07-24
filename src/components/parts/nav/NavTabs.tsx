@@ -1,12 +1,12 @@
-import * as React from 'react';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Box from '@mui/material/Box';
-import { LogoutButton } from '../../button/LogoutButton';
-import { styled } from '@mui/material/styles';
-import { AnimalList } from '../../animal/AnimalList';
-import { AnimalInfo } from '../../animal/AnimalInfo';
-import { RegisterAnimal } from '../../animal/RegisterAnimal';
+import * as React from "react";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Box from "@mui/material/Box";
+import { LogoutButton } from "../../button/LogoutButton";
+import { styled } from "@mui/material/styles";
+import { AnimalList } from "../../animal/AnimalList";
+import { AnimalInfo } from "../../animal/AnimalInfo";
+import { RegisterAnimal } from "../../animal/registerAnimal/RegisterAnimal";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -23,9 +23,8 @@ function CustomTabPanel(props: TabPanelProps) {
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      {...other}>
+      {value === index && <Box>{children}</Box>}
     </div>
   );
 }
@@ -33,7 +32,7 @@ function CustomTabPanel(props: TabPanelProps) {
 function a11yProps(index: number) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
 }
 
@@ -49,15 +48,15 @@ const StyledTabs = styled((props: StyledTabsProps) => (
     TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }}
   />
 ))({
-  '& .MuiTabs-indicator': {
-    display: 'flex',
-    justifyContent: 'center',
-    backgroundColor: 'transparent',
+  "& .MuiTabs-indicator": {
+    display: "flex",
+    justifyContent: "center",
+    backgroundColor: "transparent",
   },
-  '& .MuiTabs-indicatorSpan': {
-    maxWidth: 200,
-    width: '100%',
-    backgroundColor: '#ffff',
+  "& .MuiTabs-indicatorSpan": {
+    maxWidth: 400,
+    width: "100%",
+    backgroundColor: "#ffff",
   },
 });
 
@@ -65,40 +64,54 @@ interface StyledTabProps {
   label: string;
 }
 
+let tabSize;
+
+if (window.screen.width <= 670 && window.screen.width >= 570) {
+  tabSize = 14;
+} else {
+  tabSize = 11;
+}
+
 const StyledTab = styled((props: StyledTabProps) => (
   <Tab disableRipple {...props} />
 ))(({ theme }) => ({
-  textTransform: 'none',
+  textTransform: "none",
   fontWeight: theme.typography.fontWeightBold,
-  fontSize: theme.typography.pxToRem(20),
+  fontSize: theme.typography.pxToRem(tabSize || 18),
   marginRight: theme.spacing(1),
-  color: 'ffffffe0',
-  '&.Mui-selected': {
-    color: '#ffffffe0',
+  color: "ffffffe0",
+  "&.Mui-selected": {
+    color: "#ffffffe0",
   },
-  '&.Mui-focusVisible': {
-    backgroundColor: '#ffffffe0',
+  "&.Mui-focusVisible": {
+    backgroundColor: "#ffffffe0",
   },
 }));
 
 export default function Navtabs() {
   const [value, setValue] = React.useState(0);
-  
+
   const handleChange = (_e: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
   return (
-    <Box sx={{ width: '100%', height: "100vh", background: "#ffff" }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider', background: "#FC466B", display: "flex", justifyContent: "space-around" }}>
+    <Box sx={{ width: "100%", background: "#ffff" }}>
+      <Box
+        sx={{
+          borderBottom: 1,
+          borderColor: "divider",
+          background: "#FC466B",
+          display: "flex",
+          justifyContent: "space-between",
+        }}>
         <StyledTabs
           value={value}
           onChange={handleChange}
-          aria-label="styled tabs example"
-        >
-          <StyledTab label="Lista de animais" {...a11yProps(0)}/>
-          <StyledTab label="Proucure um animal" {...a11yProps(1)}/>
-          <StyledTab label="Registre um animal"  {...a11yProps(2)}/>
+          aria-label="styled tabs example">
+          <StyledTab label="Lista de animais" {...a11yProps(0)} />
+          <StyledTab label="Proucure um animal" {...a11yProps(1)} />
+          <StyledTab label="Registre um animal" {...a11yProps(2)} />
         </StyledTabs>
         <LogoutButton />
       </Box>
@@ -106,7 +119,7 @@ export default function Navtabs() {
         <AnimalList />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <AnimalInfo  />
+        <AnimalInfo />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         <RegisterAnimal />
