@@ -24,8 +24,6 @@ export const RegisterAnimal = () => {
       tattoCode: data.get("tattoCode") as string,
     };
 
-    console.log(animalInfo)
-
     const {
       name,
       weight,

@@ -40,7 +40,7 @@ export const AnimalList = () => {
           <div style={{ height: "90vh", width: "80%" }}>
             <DataGrid
               rows={rows}
-              sx={{ paddingLeft: 1, background: "#fff" }}
+              sx={{ paddingLeft: 2, background: "#fff",color: "#313131", fontWeight: "600" }}
               columns={columns}
               initialState={{
                 pagination: {

@@ -66,7 +66,6 @@ interface StyledTabProps {
 
 let tabSize = 20
 
-console.log(window.screen.width)
 if (window.screen.width <= 670 && window.screen.width >= 570) {
   tabSize = 14;
 } else if(window.screen.width <= 570){
