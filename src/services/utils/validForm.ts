@@ -86,7 +86,7 @@ function isValidBirthday(date: string){
       transition: Bounce,
     })
   }
-  return true
+  return date
 }
 
 export const validForm = {

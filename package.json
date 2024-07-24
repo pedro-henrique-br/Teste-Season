@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "proxy": "https://pethub-hml.cgtecnologia.com.br/usuario",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

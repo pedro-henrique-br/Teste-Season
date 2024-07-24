@@ -1,26 +1,45 @@
-Seguem as informações do teste: 
+<h2 id="technologies">💻 Stack</h2>
 
-Para o desenvolvimento desse teste, será preciso obrigatoriamente estar escrito utilizando a Biblioteca React de preferência utilizando Typescript. O Framework css a ser empregado, pode ser o Bootstrap, Tailwindcss ou o Material Design, ou seja, a biblioteca que tiver melhor domínio. A nossa sugestão é a utilização do Material Design por utilizarmos ela no dia-a-dia, porém, não é mandatório.
+- React
+- Typescript
+- MUI(Material Design)
 
-Os itens que serão avaliados, serão a qualidade, concisão do código e entrega dentro do prazo.
+<h2 id="started">🚀 Como rodar este repositório em sua maquina local</h2>
 
-Anexo a esse e-mail, encaminho o conjunto de requisições para a API que o Pedro irá fazer as requisições.
-A Documentação dos Endpoints da API, pode ser acessado através da URL https://pethub-hml.cgtecnologia.com.br/swagger-ui/index.html#/
+<h3>Pré-requisitos</h3>
 
-A autenticação é feita através do Keycloak que fornecerá o Bearer Token e com o Bearer Token, a API pode ser consumida.
-O Keycloak é um servidor de autenticação compatível com OpenID e é o responsável pela geração dos Tokens.
+- [NodeJS](https://github.com/) v20.12.1
 
-A requisição para o login da aplicação, deve ser feita via Post, no formato x-www-form-urlencoded passando as credenciais de acesso que constam no conjunto de requisições do Postman que envio anexo.
+<h3>Clonando na maquina local</h3>
 
-A ordem sugerida de desenvolvimento desse projeto, é a seguinte:
-Login
-Cadastro de Usuário (o usuário passado já deve estar autenticado) para cadastrar os dados da Pessoa
-Cadastro de Animal
-Lista de animais
-Detalhes de um animal
-Com a sugestão acima, serão 5 telas a serem desenvolvidas.
+Como Clonar esse repositório
 
-A API, vincula os animais cadastrados ao usuário autenticado, ou seja, o Usuário João, ao fazer login no sistema, visualizará apenas os dados cadastrados por ele. Não há a possibilidade de um usuário cadastrar dados para outro usuário por exemplo.
+```bash
+git clone https://github.com/pedro-henrique-br/Teste-Season
+```
 
+<h3>Iniciando</h3>
 
-Se tiver alguma dúvida, me coloco à disposição.
+Como iniciar este repositório? 
+
+Antes de iniciar o projeto, use a demo do cors-anywhere para evitar o erro de CORS
+
+Basta entrar no link abaixo e requisitar o acesso temporario
+https://cors-anywhere.herokuapp.com/corsdemo
+
+DOCS - do cors-demo(https://github.com/Rob--W/cors-anywhere/issues/301)
+
+```bash
+cd Teste-Season
+npm run dev
+```
+
+Crie um .env na raiz do projeto com os acessos de auth do keycloak
+
+```bash
+VITE_GRANT_TYPE = grant-type
+VITE_CLIENT_ID = client-id
+VITE_USERNAME = username
+VITE_PASSWORD = password
+VITE_CLIENT_SECRET = client-secret
+```

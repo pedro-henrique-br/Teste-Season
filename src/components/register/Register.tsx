@@ -8,10 +8,15 @@ import { Header } from '../../components/parts/header/Header'
 import { Aside } from '../../components/parts/aside/Aside';
 // import { validForm } from '../../services/utils/validForm';
 import { Bounce, toast } from 'react-toastify';
+import { auth } from '../../services/auth';
+import { api } from '../../services/utils/api';
+import { validForm } from '../../services/utils/validForm';
 
 const defaultTheme = createTheme();
 
 export const Register = () => {
+
+  auth()
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -23,8 +28,17 @@ export const Register = () => {
       birthday: data.get('birthday') as string,
     }
 
+    const reverseBirthday = userCredentials.birthday.split("")
+    const validFormatBirthbay = reverseBirthday.join("")
+ 
+    console.log(validFormatBirthbay)
+
+    const isValidName = validForm.isValidName(userCredentials.name)
+    const isValidCpf = validForm.isValidCpf(userCredentials.cpf)
+    const isValidBirthday = validForm.isValidBirthday(validFormatBirthbay)
+
     if((userCredentials.name != "" && userCredentials.cpf != "") && userCredentials.birthday != ""){
-      return null
+      api.isUserRegistered(isValidName, isValidCpf ? (isValidCpf) : (null), isValidBirthday)
     }
     toast.error('Preencha o formulário corretamente!', {
       position: "bottom-right",
@@ -37,11 +51,6 @@ export const Register = () => {
       theme: "light",
       transition: Bounce,
     });
-    // const isValidName = validForm.isValidName(userCredentials.name)
-    // const isValidCpf = validForm.isValidCpf(userCredentials.cpf)
-    // const isValidBirthday = validForm.isValidBirthday(userCredentials.birthday)
-
-
   };
   return (
     <>

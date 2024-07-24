@@ -2,10 +2,11 @@ import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import { useNavigate } from 'react-router-dom';
 import { LogoutButton } from '../../LogoutButton';
-import { GetAnimalRows } from '../../GetAnimalRows';
+import { styled } from '@mui/material/styles';
+import { GetAnimalList } from '../../GetAnimalList';
 import { GetAnimalInfo } from '../../GetAnimalInfo';
+import { RegisterAnimal } from '../../RegisterAnimal';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -36,42 +37,79 @@ function a11yProps(index: number) {
   };
 }
 
+interface StyledTabsProps {
+  children?: React.ReactNode;
+  value: number;
+  onChange: (event: React.SyntheticEvent, newValue: number) => void;
+}
+
+const StyledTabs = styled((props: StyledTabsProps) => (
+  <Tabs
+    {...props}
+    TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }}
+  />
+))({
+  '& .MuiTabs-indicator': {
+    display: 'flex',
+    justifyContent: 'center',
+    backgroundColor: 'transparent',
+  },
+  '& .MuiTabs-indicatorSpan': {
+    maxWidth: 200,
+    width: '100%',
+    backgroundColor: '#ffff',
+  },
+});
+
+interface StyledTabProps {
+  label: string;
+}
+
+const StyledTab = styled((props: StyledTabProps) => (
+  <Tab disableRipple {...props} />
+))(({ theme }) => ({
+  textTransform: 'none',
+  fontWeight: theme.typography.fontWeightBold,
+  fontSize: theme.typography.pxToRem(20),
+  marginRight: theme.spacing(1),
+  color: 'ffffffe0',
+  '&.Mui-selected': {
+    color: '#ffffffe0',
+  },
+  '&.Mui-focusVisible': {
+    backgroundColor: '#ffffffe0',
+  },
+}));
+
 export default function Navtabs() {
-  const [value, setValue] = React.useState('one');
+  const [value, setValue] = React.useState(0);
 
-  // const navigate = useNavigate()
-
-  const handleChange = (_e: React.SyntheticEvent, newValue: string) => {
+  const handleChange = (_e: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
-//   const handleTabChange = (newTabValue: string) => {
-
-//     switch(newTabValue) {
-//         case 'animals':
-//           navigate('/home/animals')
-//             break
-//     }
-// };
-
   return (
-    <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          <Tab label="Animal List" {...a11yProps(0)} />
-          <Tab label="Search Animal" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
-          <LogoutButton />
-        </Tabs>
+    <Box sx={{ width: '100%', height: "100vh", background: "#ffff" }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider', background: "#FC466B", display: "flex", justifyContent: "space-around" }}>
+        <StyledTabs
+          value={value}
+          onChange={handleChange}
+          aria-label="styled tabs example"
+        >
+          <StyledTab label="Animals List" {...a11yProps(0)}/>
+          <StyledTab label="Animals Info" {...a11yProps(1)}/>
+          <StyledTab label="Register an Animal"  {...a11yProps(2)}/>
+        </StyledTabs>
+        <LogoutButton />
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <GetAnimalRows />
+        <GetAnimalList />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <h1>Proucurar animal</h1>
+        <GetAnimalInfo />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        <GetAnimalInfo id={24} />
+        <RegisterAnimal />
       </CustomTabPanel>
     </Box>
   );

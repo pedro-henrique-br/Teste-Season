@@ -2,8 +2,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { Login } from "./components/login/Login";
 import { Register } from "./components/register/Register";
 import { Home } from "../src/components/Home";
-import { PrivateRoute } from "./services/PrivateRoute";
-import { GetAnimalRows } from "./components/GetAnimalRows";
+// import { PrivateRoute } from "./services/PrivateRoute";
 
 const App = () => {
  return (
@@ -12,11 +11,10 @@ const App = () => {
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />}/>
-      <Route path="/home/animals" element={<GetAnimalRows />} />
 
-      <Route path='/' element={<PrivateRoute/>}>
+      {/* <Route path='/' element={<PrivateRoute/>}> */}
         <Route path='/home' element={<Home />}/>
-      </Route>
+      {/* </Route> */}
 
       <Route path="*" element={<h1>ERROR 404</h1>}/>
     </Routes>

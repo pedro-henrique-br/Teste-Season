@@ -9,7 +9,7 @@ export const LogoutButton = () => {
   }
 
   return (
-    <Button onClick={() => logout()}>
+    <Button sx={{color: "#fff", display: "flex", alignItems: "center", gap: "5px", justifyContent: "center"}} onClick={() => logout()}>
       Logout
       <LogoutIcon />
     </Button>

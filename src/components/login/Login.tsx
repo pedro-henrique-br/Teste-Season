@@ -44,11 +44,10 @@ export const Login = () => {
 
     if(userCredentials.name != "" && userCredentials.cpf != ""){
       if(isValidCpf as string){
-        const user = await api.isValidUser(isValidName, isValidCpf as string)
-        return user
+        api.isValidUser(isValidName, isValidCpf as string)
       }
     } else {
-      toast.error('Preencha o formulário corretamente!', {
+      toast.error('Fill out the form correctly!', {
       position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
