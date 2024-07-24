@@ -1,6 +1,6 @@
 // import { api } from '../../services/utils/api';
 import { Bounce, toast } from "react-toastify";
-import styles from "./registerAnimal.module.css";
+import styles from './registerAnimal.module.css'
 
 import { Box, Button, InputLabel, TextField, Typography } from "@mui/material";
 import { api } from "../../../services/utils/api";
@@ -37,7 +37,16 @@ export const RegisterAnimal = () => {
       chipCode,
       tattoCode,
     } = animalInfo;
-    if (name != "" && weight > 0 && specieName != "") {
+
+    const isInputsValid = Object.values(animalInfo).map((value) => {
+      return value === "" ? (false) : (true)
+    }) 
+
+    let inputFalse
+    
+    isInputsValid.includes(false) ? (inputFalse = false) : (inputFalse = true)
+
+    if (inputFalse) {
       api.registerAnimal(
         name,
         specieName,
@@ -79,7 +88,7 @@ export const RegisterAnimal = () => {
             alignItems: "center",
             justifyContent: "center",
           }}>
-          <Typography component="h1" variant="h4">
+          <Typography sx={{fontWeight: 600}} component="h1" variant="h4">
             Cadastre um animal
           </Typography>
           <Box
@@ -247,7 +256,7 @@ export const RegisterAnimal = () => {
         <Box>
           <img
             className={styles.img}
-            src="src\assets\img\imageAnimalsLover.png"
+            src="src/assets/img/imageAnimalsLover.png"
             alt="img animal"
           />
         </Box>

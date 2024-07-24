@@ -14,12 +14,12 @@ import {
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-import { Header } from "../../components/parts/header/Header";
-import { Aside } from "../../components/parts/aside/Aside";
 import { Bounce, toast } from "react-toastify";
 import { auth } from "../../services/auth";
 import { api } from "../../services/utils/api";
 import { validForm } from "../../services/utils/validForm";
+import { Header } from "../../components/Parts/header/Header";
+import { Aside } from "../../components/Parts/aside/Aside";
 
 const defaultTheme = createTheme();
 
@@ -53,18 +53,19 @@ export const Register = () => {
         isValidCpf ? isValidCpf : null,
         isValidBirthday
       );
+    } else {
+      toast.error("Preencha o formulário corretamente!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     }
-    toast.error("Preencha o formulário corretamente!", {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      transition: Bounce,
-    });
   };
   return (
     <>

@@ -1,8 +1,6 @@
 import { Box, Button, TextField } from "@mui/material";
-import { api } from "../../services/utils/api";
+import { api } from "../../../services/utils/api";
 import { useState } from "react";
-
-// props : {id: number}
 
 import * as React from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";

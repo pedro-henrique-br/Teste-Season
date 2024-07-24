@@ -1,7 +1,6 @@
-import NavTabs from "../parts/nav/NavTabs";
-
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import Navtabs from "../../components/Parts/nav/NavTabs";
 
 const darkTheme = createTheme({
   palette: {
@@ -12,7 +11,7 @@ const darkTheme = createTheme({
 export const Home = () => {
   return (
     <>
-      <NavTabs />
+      <Navtabs />
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
       </ThemeProvider>

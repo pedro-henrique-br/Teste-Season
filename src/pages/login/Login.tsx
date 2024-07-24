@@ -13,17 +13,17 @@ import {
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-import { Header } from "../parts/header/Header";
-import { Aside } from "../parts/aside/Aside";
 import { api } from "../../services/utils/api";
 import { auth } from "../../services/auth";
 import { Bounce, toast } from "react-toastify";
 import { validForm } from "../../services/utils/validForm";
+import { Aside } from "../../components/Parts/aside/Aside";
+import { Header } from "../../components/Parts/header/Header";
 
 const defaultTheme = createTheme();
 
 export const Login = () => {
-  auth();
+  auth()
 
   if (localStorage.getItem("isAuth") != null) {
     window.location.href = "/home";

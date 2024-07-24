@@ -31,7 +31,6 @@ const getAllAnimals = async () => {
 
 const registerAnimal = async (name: string, specieName: string, weight: number, scientificName: string, color: string, birthday: string, animalportSize: string, animalTemperament: string, breed: string, chipCode: string, tattoCode: string) => {
   if(name.length >= 3, specieName.length >= 3){
-    console.log(name, weight)
     try{
       const response = await axios.post(
       'https://cors-anywhere.herokuapp.com/https://pethub-hml.cgtecnologia.com.br/api/v1/animal',

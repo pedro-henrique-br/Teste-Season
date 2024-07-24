@@ -2,11 +2,11 @@ import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
-import { LogoutButton } from "../../button/LogoutButton";
+import { LogoutButton } from "../../Button/LogoutButton";
 import { styled } from "@mui/material/styles";
-import { AnimalList } from "../../animal/AnimalList";
-import { AnimalInfo } from "../../animal/AnimalInfo";
-import { RegisterAnimal } from "../../animal/registerAnimal/RegisterAnimal";
+import { AnimalList } from "../../../pages/animal/animalList/AnimalList";
+import { RegisterAnimal } from "../../../pages/animal/registerAnimal/RegisterAnimal";
+import { AnimalInfo } from "../../../pages/animal/animalInfo/AnimalInfo";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -93,6 +93,7 @@ export default function Navtabs() {
 
   const handleChange = (_e: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
+    
   };
 
   return (
