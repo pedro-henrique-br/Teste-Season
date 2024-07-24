@@ -31,21 +31,22 @@ const getAllAnimals = async () => {
 
 const registerAnimal = async (name: string, specieName: string, weight: number, scientificName: string, color: string, birthday: string, animalportSize: string, animalTemperament: string, breed: string, chipCode: string, tattoCode: string) => {
   if(name.length >= 3, specieName.length >= 3){
+    console.log(name, weight)
     try{
       const response = await axios.post(
       'https://cors-anywhere.herokuapp.com/https://pethub-hml.cgtecnologia.com.br/api/v1/animal',
       {
-          nome: name,
-          nomeEspecie: specieName,
-          peso: weight,
-          nomeCientifico: scientificName,
-          cor: color,
-          dataNascimento: birthday,
-          tamanhoPorte: animalportSize,
-          temperamento: animalTemperament,
-          raca: breed,
-          codigoChip: chipCode || null,
-          codigoTatuagem: tattoCode || null
+          nome: `${name}`,
+          nomeCientifico: `${scientificName}`,
+          nomeEspecie: `${specieName}`,
+          cor: `${color}`,
+          codigoChip: chipCode || "string",
+          codigoTatuagem: tattoCode || "string",
+          dataNascimento: birthday || "string",
+          tamanhoPorte: animalportSize || "string",
+          peso: `${weight || "string"}`,
+          temperamento: animalTemperament || "string",
+          raca: `${breed || "string"}`
       },
       {
         headers: {

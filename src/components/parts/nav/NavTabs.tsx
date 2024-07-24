@@ -64,11 +64,12 @@ interface StyledTabProps {
   label: string;
 }
 
-let tabSize;
+let tabSize = 20
 
+console.log(window.screen.width)
 if (window.screen.width <= 670 && window.screen.width >= 570) {
   tabSize = 14;
-} else {
+} else if(window.screen.width <= 570){
   tabSize = 11;
 }
 
@@ -77,7 +78,7 @@ const StyledTab = styled((props: StyledTabProps) => (
 ))(({ theme }) => ({
   textTransform: "none",
   fontWeight: theme.typography.fontWeightBold,
-  fontSize: theme.typography.pxToRem(tabSize || 18),
+  fontSize: theme.typography.pxToRem(tabSize),
   marginRight: theme.spacing(1),
   color: "ffffffe0",
   "&.Mui-selected": {
