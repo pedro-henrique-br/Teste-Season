@@ -29,15 +29,14 @@ export const AnimalList = () => {
 
   return (
     <>
-      {rows.length > 0 ? (
+      {rows === undefined ? (null) : (
         <Box
           sx={{
             width: "100vw",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-          }}
-        >
+          }}>
           <div style={{ height: "90vh", width: "80%" }}>
             <DataGrid
               rows={rows}
@@ -52,7 +51,7 @@ export const AnimalList = () => {
             />
           </div>
         </Box>
-      ) : (null)}
+      )}
     </>
   );
 };
