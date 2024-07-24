@@ -29,7 +29,7 @@ as dependencias
 ```
 
 
-## Environment Variables
+## Variáveis de ambiemnte
 
 Antes de Rodar este repositório, você precisará adicionar as seguintes variáveis ​​de ambiente ao seu arquivo .env
 
