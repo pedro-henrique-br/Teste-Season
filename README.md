@@ -31,6 +31,7 @@ DOCS - do cors-demo(https://github.com/Rob--W/cors-anywhere/issues/301)
 
 ```bash
 cd Teste-Season
+npm install
 npm run dev
 ```
 
