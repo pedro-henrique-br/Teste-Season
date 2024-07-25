@@ -111,7 +111,7 @@ export default function Navtabs() {
           onChange={handleChange}
           aria-label="styled tabs example">
           <StyledTab label="Lista de animais" {...a11yProps(0)} />
-          <StyledTab label="Proucure um animal" {...a11yProps(1)} />
+          <StyledTab label="Pesquise um animal" {...a11yProps(1)} />
           <StyledTab label="Registre um animal" {...a11yProps(2)} />
         </StyledTabs>
         <LogoutButton />
