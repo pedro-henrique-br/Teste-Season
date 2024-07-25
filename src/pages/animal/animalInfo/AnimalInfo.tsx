@@ -15,6 +15,8 @@ const columns: GridColDef[] = [
   { field: "tamanhoPorte", headerName: "Porte do animal", width: 200 },
   { field: "temperamento", headerName: "Temperamento do animal", width: 200 },
   { field: "dataNascimento", headerName: "Data de nascimento", width: 200 },
+  { field: "codigoTatuagem", headerName: "Codigo da tatuagem", width: 200 },
+  { field: "codigoChip", headerName: "Codigo do Chip", width: 200 },
 ];
 
 export const AnimalInfo = () => {
